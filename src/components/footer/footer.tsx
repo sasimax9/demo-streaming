@@ -17,14 +17,38 @@ export default function Footer() {
             <div className="container">
                 <div className="m-0 text-center text-white">
                     <div className="row d-flex justify-content-center mt-4">
-                        <img className="socialSize ml-3" src={FacebookLogo} />
-                        <img className="socialSize ml-3" src={TwitterLogo} />
-                        <img className="socialSize ml-3" src={InstagramLogo} />
+                        <img
+                            className="socialSize ml-3"
+                            alt="Facebook Logo"
+                            src={FacebookLogo}
+                        />
+                        <img
+                            className="socialSize ml-3"
+                            alt="Twitter Logo"
+                            src={TwitterLogo}
+                        />
+                        <img
+                            className="socialSize ml-3"
+                            alt="Instagram Logo"
+                            src={InstagramLogo}
+                        />
                     </div>
                     <div className="row d-flex justify-content-center mt-4">
-                        <img className="storeSize ml-2" src={AppStoreLogo} />
-                        <img className="storeSize ml-2" src={PlayStoreLogo} />
-                        <img className="storeSize ml-2" src={WindowsLogo} />
+                        <img
+                            className="storeSize ml-2"
+                            alt="AppStore Logo"
+                            src={AppStoreLogo}
+                        />
+                        <img
+                            className="storeSize ml-2"
+                            alt="PlayStore Store Logo"
+                            src={PlayStoreLogo}
+                        />
+                        <img
+                            className="storeSize ml-2"
+                            alt="Microsoft Store Store Logo"
+                            src={WindowsLogo}
+                        />
                     </div>
                     <div className="row d-flex justify-content-center mt-4">
                         <p className="ml-4">Home </p>

@@ -3,15 +3,20 @@ import "./header.css";
 
 export default function Header() {
     return (
-        <nav className="navbar navbar-dark bg-dark static-top mb-5">
-            <div className="container">
-                <a className="navbar-brand" href="#">
-                    DEMO Streaming
-                </a>
-                <a className="btn btn-primary" href="#">
-                    Log in
-                </a>
-            </div>
-        </nav>
+        <React.Fragment>
+            <nav className="navbar navbar-dark bg-dark static-top ">
+                <div className="container">
+                    <span className="navbar-brand">DEMO Streaming</span>
+                    <button type="button" className="btn btn-primary">
+                        Log in
+                    </button>
+                </div>
+            </nav>
+            <nav className="navbar navbar-light bg-light static-top mb-5">
+                <div className="container">
+                    <span className="navbar-brand">DEMO Streaming</span>
+                </div>
+            </nav>
+        </React.Fragment>
     );
 }

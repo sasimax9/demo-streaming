@@ -1,5 +1,6 @@
 import React from "react";
 import { RouteComponentProps, Link } from "@reach/router";
+import placeholderTv from "../assets/placeholderTv.png";
 import placeholder from "../assets/placeholder.png";
 import "./pages.css";
 
@@ -11,8 +12,11 @@ export default function HomePage(_props: RouteComponentProps) {
                     <div className="card h-100">
                         <div className="card-body">
                             <h4 className="card-title">Series</h4>
-                            <img src={placeholder}></img>
-                            <p className="card-text">Lorem ipsum</p>
+                            <img
+                                src={placeholderTv}
+                                alt="TV Series Placeholder"
+                            />
+                            <p className="card-text">Top TV Series</p>
                         </div>
                         <div className="card-footer">
                             <Link
@@ -28,8 +32,8 @@ export default function HomePage(_props: RouteComponentProps) {
                     <div className="card h-100">
                         <div className="card-body">
                             <h4 className="card-title">Movies</h4>
-                            <img src={placeholder}></img>
-                            <p className="card-text">Lorem ipsum</p>
+                            <img src={placeholder} alt="Movies Placeholder" />
+                            <p className="card-text">Top Movies</p>
                         </div>
                         <div className="card-footer">
                             <Link

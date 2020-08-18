@@ -3,7 +3,7 @@ export default interface Content {
     entries: Entry[];
 }
 
-interface Entry {
+export interface Entry {
     title: string;
     description: string;
     programType: "series" | "movie";

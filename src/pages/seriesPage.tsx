@@ -1,35 +1,47 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { RouteComponentProps } from "@reach/router";
-import { ContentContext } from "../app";
+import Card from "../components/card";
+import { Entry } from "../models/content";
+import getContent from "../api";
+
+async function gatherMovies(): Promise<Entry[]> {
+    const content = await getContent();
+    return content.entries
+        .filter(
+            entry => entry.programType === "series" && entry.releaseYear >= 2010
+        )
+        .sort((a, b) => (a.title > b.title ? 1 : -1))
+        .splice(0, 21);
+}
 
 export default function SeriesPage(_props: RouteComponentProps) {
-    const context = useContext(ContentContext);
-    const filteredSeries = context.entries.filter(entry => {
-        return entry.programType == "series" && entry.releaseYear >= 2010;
-    });
-    const series = filteredSeries
-        .sort((a, b) => (a.title > b.title ? 1 : -1))
-        .slice(0, 21);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [series, setSeries] = useState([] as Entry[]);
+
+    useEffect(() => {
+        gatherMovies()
+            .then(series => {
+                setSeries(series);
+                setLoading(false);
+                setError(false);
+            })
+            .catch(() => {
+                setError(true);
+                setLoading(false);
+            });
+    }, []);
 
     return (
         <div className="container">
             <div className="row text-center">
-                {series.map((serie, index) => {
-                    return (
-                        <div
-                            key={index}
-                            className="col-6 col-lg-2 col-md-3 col-sm-4 col-xs-4 mb-4"
-                        >
-                            <div className="card h-100">
-                                <div className="card-body">
-                                    <img src={serie.images.posterArt.url}></img>
-                                    <p className="card-text"></p>
-                                </div>
-                                <div className="card-footer">{serie.title}</div>
-                            </div>
-                        </div>
-                    );
-                })}
+                {loading && "Loading content"}
+                {error && "Something went wrong"}
+                {!loading &&
+                    !error &&
+                    series.map((serie, index) => {
+                        return <Card key={index} program={serie}></Card>;
+                    })}
             </div>
         </div>
     );
